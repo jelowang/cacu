@@ -1,0 +1,21 @@
+﻿#LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+#LOCAL_C_INCLUDES += $(shell ls -FR $(LOCAL_C_INCLUDES) | grep $(LOCAL_PATH)/$ )
+#LOCAL_C_INCLUDES := $(LOCAL_C_INCLUDES:$(LOCAL_PATH)/%:=$(LOCAL_PATH)/%)
+
+# 扫描目录下的所有源文件
+# MY_FILES_PATH  :=  $(LOCAL_PATH) \
+#                    $(LOCAL_PATH)/../../Classes
+
+# MY_FILES_SUFFIX := %.cpp %.c %.cc
+
+# My_All_Files := $(foreach src_path,$(MY_FILES_PATH), $(shell find $(src_path) -type f) ) 
+# My_All_Files := $(My_All_Files:$(MY_CPP_PATH)/./%=$(MY_CPP_PATH)%)
+# MY_SRC_LIST  := $(filter $(MY_FILES_SUFFIX),$(My_All_Files)) 
+# MY_SRC_LIST  := $(MY_SRC_LIST:$(LOCAL_PATH)/%=%)
+# LOCAL_SRC_FILES := $(MY_SRC_LIST)
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_MODULE := cacu
+LOCAL_SRC_FILES := 	$(LOCAL_PATH)/src/com_leyoo_cacu_JniClient.c
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/
+include $(BUILD_SHARED_LIBRARY)
